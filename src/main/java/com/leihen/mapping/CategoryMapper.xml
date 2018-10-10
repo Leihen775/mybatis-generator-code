@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.leihen.dao.CategoryMapper" >
+  <resultMap id="BaseResultMap" type="com.leihen.entity.Category" >
+    <id column="cid" property="cid" jdbcType="VARCHAR" />
+    <result column="cname" property="cname" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from category
+    where cid = #{cid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.leihen.entity.Category" >
+    insert into category (cid, cname)
+    values (#{cid,jdbcType=VARCHAR}, #{cname,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.leihen.entity.Category" >
+    update category
+    set cname = #{cname,jdbcType=VARCHAR}
+    where cid = #{cid,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select cid, cname
+    from category
+    where cid = #{cid,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select cid, cname
+    from category
+  </select>
+</mapper>
